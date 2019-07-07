@@ -1,6 +1,5 @@
 package com.adminportal.controller;
 
-
 import com.adminportal.domain.Book;
 import com.adminportal.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,35 +26,35 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    @RequestMapping(value="/add", method=RequestMethod.GET)
-    public String addBook(Model model){
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public String addBook(Model model) {
         Book book = new Book();
         model.addAttribute("book", book);
         return "addBook";
     }
 
-    @RequestMapping(value="/add", method=RequestMethod.POST)
-    public String addBookPost(
-            @ModelAttribute("book")Book book, HttpServletRequest request
-    ){
-       bookService.save(book);
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public String addBookPost(@ModelAttribute("book") Book book, HttpServletRequest request) {
+        bookService.save(book);
 
         MultipartFile bookImage = book.getBookImage();
 
-        try{
+        try {
             byte[] bytes = bookImage.getBytes();
-            String name = book.getId()+".png";
-            BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File("src/main/resources/static/image/book/"+name)));
+            String name = book.getId() + ".png";
+            BufferedOutputStream stream = new BufferedOutputStream(
+                    new FileOutputStream(new File("src/main/resources/static/image/book/" + name)));
             stream.write(bytes);
             stream.close();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
         return "redirect:bookList";
     }
 
     @RequestMapping("/bookInfo")
-    public String bookInfo(@RequestParam("id") Long id, Model model){
+    public String bookInfo(@RequestParam("id") Long id, Model model) {
         Book book = bookService.findOne(id);
         model.addAttribute("book", book);
 
@@ -63,40 +62,44 @@ public class BookController {
     }
 
     @RequestMapping("/updateBook")
-    public String updateBook(@RequestParam("id") Long id, Model model){
+    public String updateBook(@RequestParam("id") Long id, Model model) {
         Book book = bookService.findOne(id);
-        model.addAttribute("book",book);
+        model.addAttribute("book", book);
 
         return "updateBook";
     }
 
-    @RequestMapping(value="/updateBook", method = RequestMethod.POST)
-    public String updateBookPost(@ModelAttribute("book") Book book, HttpServletRequest request){
+    @RequestMapping(value="/updateBook", method=RequestMethod.POST)
+    public String updateBookPost(@ModelAttribute("book") Book book, HttpServletRequest request) {
         bookService.save(book);
 
         MultipartFile bookImage = book.getBookImage();
 
-        if(!bookImage.isEmpty()){
-            try{
+        if(!bookImage.isEmpty()) {
+            try {
                 byte[] bytes = bookImage.getBytes();
-                String name = book.getId()+".png";
+                String name = book.getId() + ".png";
 
                 Files.delete(Paths.get("src/main/resources/static/image/book/"+name));
 
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File("src/main/resources/static/image/book/"+name)));
+                BufferedOutputStream stream = new BufferedOutputStream(
+                        new FileOutputStream(new File("src/main/resources/static/image/book/" + name)));
                 stream.write(bytes);
                 stream.close();
-            }catch(Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+
         return "redirect:/book/bookInfo?id="+book.getId();
     }
 
     @RequestMapping("/bookList")
-    public String bookList(Model model){
+    public String bookList(Model model) {
         List<Book> bookList = bookService.findAll();
-        model.addAttribute("bookList",bookList);
+        model.addAttribute("bookList", bookList);
         return "bookList";
+
     }
+
 }
