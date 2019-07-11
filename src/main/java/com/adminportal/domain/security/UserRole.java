@@ -1,6 +1,5 @@
 package com.adminportal.domain.security;
 
-
 import com.adminportal.domain.User;
 
 import javax.persistence.*;

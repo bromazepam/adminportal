@@ -10,16 +10,15 @@ public class ShippingAddress {
     private Long id;
     private String shippingAddressName;
     private String shippingAddressStreet1;
-    private String shippingAddresstreet2;
+    private String shippingAddressStreet2;
     private String shippingAddressCity;
     private String shippingAddressState;
     private String shippingAddressCountry;
     private String shippingAddressZipcode;
 
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @OneToOne
+    private Order order;
 
 
 
@@ -47,12 +46,12 @@ public class ShippingAddress {
         this.shippingAddressStreet1 = shippingAddressStreet1;
     }
 
-    public String getShippingAddresstreet2() {
-        return shippingAddresstreet2;
+    public String getShippingAddressStreet2() {
+        return shippingAddressStreet2;
     }
 
-    public void setShippingAddresstreet2(String shippingAddresstreet2) {
-        this.shippingAddresstreet2 = shippingAddresstreet2;
+    public void setShippingAddressStreet2(String shippingAddressStreet2) {
+        this.shippingAddressStreet2 = shippingAddressStreet2;
     }
 
     public String getShippingAddressCity() {
@@ -87,11 +86,11 @@ public class ShippingAddress {
         this.shippingAddressZipcode = shippingAddressZipcode;
     }
 
-    public User getUser() {
-        return user;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }
