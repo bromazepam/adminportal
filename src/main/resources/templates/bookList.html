@@ -11,13 +11,13 @@
             <thead>
             <tr>
                 <th><input th:id="selectAllBooks" type="checkbox"/></th>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Category</th>
-                <th>List price</th>
-                <th>Our price</th>
-                <th>Active?</th>
-                <th>Operation</th>
+                <th>Naslov knjige</th>
+                <th>Autor</th>
+                <th>Kategorija</th>
+                <th>Cena</th>
+                <th>Cena sa popustom</th>
+                <th>Aktivna?</th>
+                <th>Operacija</th>
             </tr>
             </thead>
             <tbody>
@@ -35,14 +35,14 @@
                 <td>
                     <input hidden="hidden" name="id" th:values="${book.id}"/>
                     <button th:id="'oneBook-'+${book.id}" class="btn btn-danger btn-xs delete-book" type="submit" value="delete">
-                        <span class="fa fa-times">Delete</span>
+                        <span class="fa fa-times">Izbriši</span>
                     </button>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
-    <button th:id="deleteSelected" class="btn btn-danger">Delete Selected</button>
+    <button th:id="deleteSelected" class="btn btn-danger">Izbriši selektovano</button>
 </div>
 
 
@@ -56,6 +56,10 @@
 				stateSave: true
 			});
 		});
+		$.extend(true, $.fn.dataTable.defaults, {
+    "language": {
+        "url": "https://cdn.datatables.net/plug-ins/1.10.16/i18n/Serbian.json"
+    }
 
 </script>
 </body>

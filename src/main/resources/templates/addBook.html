@@ -12,65 +12,63 @@
 				enctype="multipart/form-data">
 				<fieldset>
 					<legend class="center-block">
-						New Book Information<span style="font-size: small"> * is a
-							required field</span>
+						Informacije o novoj knjizi<span style="font-size: small"> * je obavezno polje</span>
 					</legend>
 
 
 					<!-- title -->
 					<div class="form-group">
-						<label class="col-md-2 control-label" for="title">* Title</label>
+						<label class="col-md-2 control-label" for="title">* Naslov</label>
 
 						<div class="col-md-8">
 							<input type="text" name="title" class="form-control" id="title"
-								th:value="${book.title}" required="required" placeholder="Title" />
-							<span class="help-block">Title of the book</span>
+								th:value="${book.title}" required="required" placeholder="Naslov" />
+							<span class="help-block">Naslov knjige</span>
 						</div>
 					</div>
 
 					<!-- author -->
 					<div class="form-group">
 						<label class="col-md-2 control-label" for="author">*
-							Author</label>
+							Autor</label>
 						<div class="col-md-8">
 							<input type="text" name="author" class="form-control" id="author"
 								th:value="${book.author}" required="required"
-								placeholder="Author" /> <span class="help-block">Author
-								of the book</span>
+								placeholder="Autor" /> <span class="help-block">Autor knjige</span>
 						</div>
 					</div>
 
 					<!-- publisher -->
 					<div class="form-group">
-						<label class="col-md-2 control-label" for="publisher">Publisher</label>
+						<label class="col-md-2 control-label" for="publisher">Izdavač</label>
 						<div class="col-md-8">
 							<input type="text" name="publisher" class="form-control"
 								id="publisher" th:value="${book.publisher}"
-								placeholder="Publisher" /> <span class="help-block">Publisher
-								of the book</span>
+								placeholder="Izdavač" /> <span class="help-block">Izdavač
+								</span>
 						</div>
 					</div>
 
 					<!-- publication date -->
 					<div class="form-group">
-						<label class="col-md-2 control-label" for="publicationDate">Publication
-							Date</label>
+						<label class="col-md-2 control-label" for="publicationDate">Datum izdavanja
+							</label>
 						<div class="col-md-8">
 							<input type="date" class="form-control" id="publicationDate"
 								name="publicationDate" th:value="${book.publicationDate}"
-								placeholder="ublication Date" /> <span class="help-block">Publication
-								Date of the book</span>
+								placeholder="Datum izdavanja" /> <span class="help-block">Datum izdavanja
+								knjige</span>
 						</div>
 					</div>
 
 					<!-- language -->
 					<div class="form-group">
-						<label class="col-md-2 control-label" for="language">Language</label>
+						<label class="col-md-2 control-label" for="language">Jezik</label>
 						<div class="col-md-8">
 							<select th:value="${book.language}" id="language" name="language"
 								class="form-control">
-								<option value="english">English</option>
-								<option value="spanish">Spanish</option>
+								<option value="english">Srpski</option>
+								<option value="spanish">Engleski</option>
 							</select>
 						</div>
 					</div>
@@ -78,36 +76,36 @@
 					<!-- category -->
 					<div class="form-group">
 						<label class="col-md-2 control-label" for="category">*
-							Category</label>
+							Kategorija</label>
 						<div class="col-md-8">
 							<select th:value="${book.category}" id="category" name="category"
 								class="form-control">
-								<option value="" selected="selected" disabled="disabled">Please
-									select an option...</option>
+								<option value="" selected="selected" disabled="disabled">Molim vas
+								odaberite opciju...</option>
 								<option value="Management"
-									th:selected="(${book.category}=='Management')">Management</option>
+									th:selected="(${book.category}=='Management')">Menadžment</option>
 								<option value="Fiction"
-									th:selected="(${book.category}=='Fiction')">Fiction</option>
+									th:selected="(${book.category}=='Fiction')">Fikcija</option>
 								<option value="Engineering"
-									th:selected="(${book.category}=='Engineering')">Engineering</option>
+									th:selected="(${book.category}=='Engineering')">Inženjerstvo</option>
 								<option value="Programming"
-									th:selected="(${book.category}=='Programming')">Programming</option>
+									th:selected="(${book.category}=='Programming')">Programiranje</option>
 								<option value="Arts &amp; Literature"
-									th:selected="(${book.category}=='Arts &amp; Literature')">Arts
-									&amp; Literature</option>
+									th:selected="(${book.category}=='Arts &amp; Literature')">Umetnost
+									</option>
 							</select>
 						</div>
 					</div>
 
 					<!-- pages -->
 					<div class="form-group">
-						<label class="col-md-2 control-label" for="pageNumber">Pages</label>
+						<label class="col-md-2 control-label" for="pageNumber">Broj strana</label>
 
 						<div class="col-md-8">
 							<input type="number" name="numberOfPages" class="form-control"
 								id="pageNumber" th:value="${book.numberOfPages}"
-								placeholder="Page Number" /> <span class="help-block">Number
-								of pages of the book</span>
+								placeholder="Broj strana" /> <span class="help-block">Broj strana
+						knjige</span>
 						</div>
 					</div>
 
@@ -117,8 +115,8 @@
 						<div class="col-md-8">
 							<select th:value="${book.format}" id="format" name="format"
 								class="form-control">
-								<option value="paperback">Paperback</option>
-								<option value="hardcover">Hardcover</option>
+								<option value="paperback">Meki povez</option>
+								<option value="hardcover">Tvrdi povez</option>
 							</select>
 						</div>
 					</div>
@@ -130,62 +128,62 @@
 						<div class="col-md-8">
 							<input type="text" name="isbn" class="form-control" id="isbn"
 								th:value="${book.isbn}" placeholder="ISBN" /> <span
-								class="help-block">ISBN of the book</span>
+								class="help-block">ISBN knjige</span>
 						</div>
 					</div>
 
 					<!-- shipping weight -->
 					<div class="form-group">
-						<label class="col-md-2 control-label" for="shippingWeight">Shipping
-							Weight</label>
+						<label class="col-md-2 control-label" for="shippingWeight">Težina
+							</label>
 						<div class="col-md-8">
 							<div class="input-group">
 								<input th:value="${book.shippingWeight}" type="number"
 									name="shippingWeight" class="form-control" id="shippingWeight"
-									placeholder="Shipping Weight" /> <span
-									class="input-group-addon">Ounces</span>
+									placeholder="Težina" /> <span
+									class="input-group-addon">grama</span>
 							</div>
-							<span class="help-block">Shipping Weight of the book</span>
+							<span class="help-block">Težina knjige</span>
 						</div>
 					</div>
 
 					<!-- list price -->
 					<div class="form-group">
-						<label class="col-md-2 control-label" for="listPrice">List
-							Price</label>
+						<label class="col-md-2 control-label" for="listPrice">Cena
+							</label>
 						<div class="col-md-8">
 							<div class="input-group">
 								<span class="input-group-addon">$</span> <input
 									th:value="${book.listPrice}" type="number" name="listPrice"
-									class="form-control" id="listPrice" placeholder="List Price" />
+									class="form-control" id="listPrice" placeholder="Cena" />
 							</div>
-							<span class="help-block">List price of the book</span>
+							<span class="help-block">Cena knjige</span>
 						</div>
 					</div>
 
 					<!-- our price -->
 					<div class="form-group">
-						<label class="col-md-2 control-label" for="ourPrice">Our
-							Price</label>
+						<label class="col-md-2 control-label" for="ourPrice">Cena sa popustom
+							</label>
 						<div class="col-md-8">
 							<div class="input-group">
 								<span class="input-group-addon">$</span> <input
 									th:value="${book.ourPrice}" type="number" name="ourPrice"
-									class="form-control" id="ourPrice" placeholder="Our Price" />
+									class="form-control" id="ourPrice" placeholder="Cena sa popustom" />
 							</div>
-							<span class="help-block">Our price of the book</span>
+							<span class="help-block">Cena knjige sa popustom</span>
 						</div>
 					</div>
 
 					<!-- in stock number -->
 					<div class="form-group">
-						<label class="col-md-2 control-label" for="inStockNumber">Number
-							in stock</label>
+						<label class="col-md-2 control-label" for="inStockNumber">Broj kopija
+							na lageru</label>
 						<div class="col-md-8">
 							<input th:value="${book.inStockNumber}" type="number"
 								name="inStockNumber" class="form-control" id="inStockNumber"
-								placeholder="Number of in-stock copies" /> <span
-								class="help-block">Number of in-stock copies</span>
+								placeholder="Broj kopija na lageru" /> <span
+								class="help-block">Broj kopija na lageru</span>
 						</div>
 					</div>
 
@@ -194,28 +192,28 @@
 						<label class="col-md-2 control-label" for="status">Status</label>
 						<div class="col-md-8">
 							<label><input value="true" type="radio" name="active"
-								checked="checked" /> Active </label> <label><input
+								checked="checked" /> Aktivna </label> <label><input
 								value="false" type="radio" name="active" />
-								Inactive </label> <span class="help-block">Whether the book is
-								active or inactive</span>
+								Neaktivna </label> <span class="help-block">U zavisnosti
+						da li je knjiga aktivna ili ne</span>
 						</div>
 					</div>
 
 					<!-- description -->
 					<div class="form-group">
-						<label class="col-md-2 control-label" for="description">Description</label>
+						<label class="col-md-2 control-label" for="description">Opis</label>
 						<div class="col-md-8">
 							<textarea name="description" rows="5" class="form-control"
 								id="description" th:value="${book.description}"
-									  placeholder="Description" ></textarea>
-							<span class="help-block">Description of the book</span>
+									  placeholder="Opis" ></textarea>
+							<span class="help-block">Opis knjige</span>
 						</div>
 					</div>
 
 					<!-- upload image -->
 					<div class="form-group">
 						<div class="col-md-2">
-							<label for="bookImage">Upload book image</label>
+							<label for="bookImage">Otpremi sliku korice</label>
 						</div>
 						<div class="col-md-8">
 							<input id="bookImage" type="file" name="bookImage"
@@ -226,8 +224,8 @@
 					<div class="form-group">
 						<div class="col-md-2"></div>
 						<div class="col-md-8">
-							<button type="submit" class="btn btn-success">Add Book</button>
-							<a class="btn btn-danger" th:href="@{/}">Cancel</a>
+							<button type="submit" class="btn btn-success">Dodaj knjigu</button>
+							<a class="btn btn-danger" th:href="@{/}">Otkaži</a>
 						</div>
 					</div>
 				</fieldset>
