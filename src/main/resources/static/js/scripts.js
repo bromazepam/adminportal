@@ -11,13 +11,13 @@ $(document).ready(function() {
 		var id=$(this).attr('id');
 
 		bootbox.confirm({
-			message: "Are you sure to remove this book? It can't be undone.",
+			message: "Da li ste sigurni da želite da izbrišete ovu knjigu? Ova akcija se ne može poništiti.",
 			buttons: {
 				cancel: {
-					label:'<i class="fa fa-times"></i> Cancel'
+					label:'<i class="fa fa-times"></i> Otkaži'
 				},
 				confirm: {
-					label:'<i class="fa fa-check"></i> Confirm'
+					label:'<i class="fa fa-check"></i> Potvrdi'
 				}
 			},
 			callback: function(confirmed) {
@@ -58,13 +58,13 @@ $(document).ready(function() {
 	    /*]]>*/
 
 	    bootbox.confirm({
-			message: "Are you sure to remove all selected books? It can't be undone.",
+			message: "Da li ste sigurni da želite da izbrišete selektovane knjige? Ova akcija se ne može poništiti.",
 			buttons: {
 				cancel: {
-					label:'<i class="fa fa-times"></i> Cancel'
+					label:'<i class="fa fa-times"></i> Otkaži'
 				},
 				confirm: {
-					label:'<i class="fa fa-check"></i> Confirm'
+					label:'<i class="fa fa-check"></i> Potvrdi'
 				}
 			},
 			callback: function(confirmed) {
