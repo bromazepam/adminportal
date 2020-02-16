@@ -34,7 +34,8 @@
                 <td th:text="${book.active}"></td>
                 <td>
                     <input hidden="hidden" name="id" th:values="${book.id}"/>
-                    <button th:id="'oneBook-'+${book.id}" class="btn btn-danger btn-xs delete-book" type="submit" value="delete">
+                    <button th:id="'oneBook-'+${book.id}" class="btn btn-danger btn-xs delete-book" type="submit"
+                            value="delete">
                         <span class="fa fa-times">Delete</span>
                     </button>
                 </td>
@@ -49,13 +50,13 @@
 <div th:replace="common/header :: body-bottom-scripts"/>
 
 <script>
-		$(document).ready(function() {
-			$("#bookListTable").DataTable({
-				"lengthMenu": [[5,10,15,20,-1],[5,10,15,20,"All"]],
-				"ordering": false,
-				stateSave: true
-			});
-		});
+    $(document).ready(function () {
+        $("#bookListTable").DataTable({
+            "lengthMenu": [[5, 10, 15, 20, -1], [5, 10, 15, 20, "All"]],
+            "ordering": false,
+            stateSave: true
+        });
+    });
 
 </script>
 </body>
