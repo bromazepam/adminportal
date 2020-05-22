@@ -1,243 +1,247 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
-<head th:replace="common/header :: common-header" />
+<head th:replace="common/header :: common-header"/>
 
 <body>
-	<div th:replace="common/header :: navbar" />
+<div th:replace="common/header :: navbar"/>
 
-	<div class="container">
-		<div class="row">
-			<form class="form-horizontal" th:action="@{/book/updateBook}" method="post"
-				enctype="multipart/form-data">
-				<fieldset>
-					<legend class="center-block">
-						Ažuriraj informacije o knjizi<span style="font-size: small"> * je
+<div class="container">
+    <div class="row">
+        <form class="form-horizontal" th:action="@{/book/updateBook}" method="post"
+              enctype="multipart/form-data">
+            <fieldset>
+                <legend class="center-block">
+                    Ažuriraj informacije o knjizi<span style="font-size: small"> * je
 					obavezno polje</span>
-					</legend>
-					
-					<input hidden="hidden" name="id" th:value="${book.id}" />
+                </legend>
+
+                <input hidden="hidden" name="id" th:value="${book.id}"/>
 
 
-					<!-- title -->
-					<div class="form-group">
-						<label class="col-md-2 control-label" for="title">* Naslov</label>
+                <!-- title -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="title">* Naslov</label>
 
-						<div class="col-md-8">
-							<input type="text" name="title" class="form-control" id="title"
-								th:value="${book.title}" required="required" placeholder="Naslov" />
-							<span class="help-block">Naslov knjige</span>
-						</div>
-					</div>
+                    <div class="col-md-8">
+                        <input type="text" name="title" class="form-control" id="title"
+                               th:value="${book.title}" required="required" placeholder="Naslov"/>
+                        <span class="help-block">Naslov knjige</span>
+                    </div>
+                </div>
 
-					<!-- author -->
-					<div class="form-group">
-						<label class="col-md-2 control-label" for="author">*
-							Autor</label>
-						<div class="col-md-8">
-							<input type="text" name="author" class="form-control" id="author"
-								th:value="${book.author}" required="required"
-								placeholder="Autor" /> <span class="help-block">Autor
+                <!-- author -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="author">*
+                        Autor</label>
+                    <div class="col-md-8">
+                        <input type="text" name="author" class="form-control" id="author"
+                               th:value="${book.author}" required="required"
+                               placeholder="Autor"/> <span class="help-block">Autor
 								knjige</span>
-						</div>
-					</div>
+                    </div>
+                </div>
 
-					<!-- publisher -->
-					<div class="form-group">
-						<label class="col-md-2 control-label" for="publisher">Izdavač</label>
-						<div class="col-md-8">
-							<input type="text" name="publisher" class="form-control"
-								id="publisher" th:value="${book.publisher}"
-								placeholder="Izdavač" /> <span class="help-block">Izdavač
+                <!-- publisher -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="publisher">Izdavač</label>
+                    <div class="col-md-8">
+                        <input type="text" name="publisher" class="form-control"
+                               id="publisher" th:value="${book.publisher}"
+                               placeholder="Izdavač"/> <span class="help-block">Izdavač
 								knjige</span>
-						</div>
-					</div>
+                    </div>
+                </div>
 
-					<!-- publication date -->
-					<div class="form-group">
-						<label class="col-md-2 control-label" for="publicationDate">Datum
-							izdavanja</label>
-						<div class="col-md-8">
-							<input type="date" class="form-control" id="publicationDate"
-								name="publicationDate" th:value="${book.publicationDate}"
-								placeholder="Datum izdavanja" /> <span class="help-block">Datum
+                <!-- publication date -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="publicationDate">Datum
+                        izdavanja</label>
+                    <div class="col-md-8">
+                        <input type="date" class="form-control" id="publicationDate"
+                               name="publicationDate" th:value="${book.publicationDate}"
+                               placeholder="Datum izdavanja"/> <span class="help-block">Datum
 								izdavanja knjige</span>
-						</div>
-					</div>
+                    </div>
+                </div>
 
-					<!-- language -->
-					<div class="form-group">
-						<label class="col-md-2 control-label" for="language">Jezik</label>
-						<div class="col-md-8">
-							<select th:value="${book.language}" id="language" name="language"
-								class="form-control">
-								<option value="Srpski">Srpski</option>
-								<option value="English">English</option>
-							</select>
-						</div>
-					</div>
+                <!-- language -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="language">Jezik</label>
+                    <div class="col-md-8">
+                        <select th:value="${book.language}" id="language" name="language"
+                                class="form-control">
+                            <option value="Srpski">Srpski</option>
+                            <option value="English">English</option>
+                        </select>
+                    </div>
+                </div>
 
-					<!-- category -->
-					<div class="form-group">
-						<label class="col-md-2 control-label" for="category">*
-							Kategorija</label>
-						<div class="col-md-8">
-							<select th:value="${book.category}" id="category" name="category"
-								class="form-control">
-								<option value="" selected="selected" disabled="disabled">Molim
-									vas odaberite opciju...</option>
-								<option value="Menadžment"
-									th:selected="(${book.category}=='Menadžment')">Menadžment</option>
-								<option value="Fikcija"
-									th:selected="(${book.category}=='Fikcija')">Fikcija</option>
-								<option value="Inženjerstvo"
-									th:selected="(${book.category}=='Inženjerstvo')">Inženjerstvo</option>
-								<option value="Programiranje"
-									th:selected="(${book.category}=='Programiranje')">Programiranje</option>
-								<option value="Umetnost"
-									th:selected="(${book.category}=='Umetnost')">Umetnost
-									</option>
-							</select>
-						</div>
-					</div>
+                <!-- category -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="category">*
+                        Kategorija</label>
+                    <div class="col-md-8">
+                        <select th:value="${book.category}" id="category" name="category"
+                                class="form-control">
+                            <option value="" selected="selected" disabled="disabled">Molim
+                                vas odaberite opciju...
+                            </option>
+                            <option value="Menadžment"
+                                    th:selected="(${book.category}=='Menadžment')">Menadžment
+                            </option>
+                            <option value="Fikcija"
+                                    th:selected="(${book.category}=='Fikcija')">Fikcija
+                            </option>
+                            <option value="Inženjerstvo"
+                                    th:selected="(${book.category}=='Inženjerstvo')">Inženjerstvo
+                            </option>
+                            <option value="Programiranje"
+                                    th:selected="(${book.category}=='Programiranje')">Programiranje
+                            </option>
+                            <option value="Umetnost"
+                                    th:selected="(${book.category}=='Umetnost')">Umetnost
+                            </option>
+                        </select>
+                    </div>
+                </div>
 
-					<!-- pages -->
-					<div class="form-group">
-						<label class="col-md-2 control-label" for="pageNumber">Broj strana</label>
+                <!-- pages -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="pageNumber">Broj strana</label>
 
-						<div class="col-md-8">
-							<input type="number" name="numberOfPages" class="form-control"
-								id="pageNumber" th:value="${book.numberOfPages}"
-								placeholder="Broj strana" /> <span class="help-block">Broj strana
+                    <div class="col-md-8">
+                        <input type="number" name="numberOfPages" class="form-control"
+                               id="pageNumber" th:value="${book.numberOfPages}"
+                               placeholder="Broj strana"/> <span class="help-block">Broj strana
 						knjige</span>
-						</div>
-					</div>
+                    </div>
+                </div>
 
-					<!-- format -->
-					<div class="form-group">
-						<label class="col-md-2 control-label" for="format">Format</label>
-						<div class="col-md-8">
-							<select th:value="${book.format}" id="format" name="format"
-								class="form-control">
-								<option value="Meki povez">Meki povez</option>
-								<option value="Tvrdi povez">Tvrdi povez</option>
-							</select>
-						</div>
-					</div>
+                <!-- format -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="format">Format</label>
+                    <div class="col-md-8">
+                        <select th:value="${book.format}" id="format" name="format"
+                                class="form-control">
+                            <option value="Meki povez">Meki povez</option>
+                            <option value="Tvrdi povez">Tvrdi povez</option>
+                        </select>
+                    </div>
+                </div>
 
-					<!-- isbn -->
-					<div class="form-group">
-						<label class="col-md-2 control-label" for="isbn">ISBN</label>
+                <!-- isbn -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="isbn">ISBN</label>
 
-						<div class="col-md-8">
-							<input type="text" name="isbn" class="form-control" id="isbn"
-								th:value="${book.isbn}" placeholder="ISBN" /> <span
-								class="help-block">ISBN knjige</span>
-						</div>
-					</div>
+                    <div class="col-md-8">
+                        <input type="text" name="isbn" class="form-control" id="isbn"
+                               th:value="${book.isbn}" placeholder="ISBN"/> <span
+                            class="help-block">ISBN knjige</span>
+                    </div>
+                </div>
 
-					<!-- shipping weight -->
-					<div class="form-group">
-						<label class="col-md-2 control-label" for="shippingWeight">Težina
-							</label>
-						<div class="col-md-8">
-							<div class="input-group">
-								<input th:value="${book.shippingWeight}" type="number" step="0.01"
-									name="shippingWeight" class="form-control" id="shippingWeight"
-									placeholder="Težina" /> <span
-									class="input-group-addon">grama</span>
-							</div>
-							<span class="help-block">Težina knjige</span>
-						</div>
-					</div>
+                <!-- shipping weight -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="shippingWeight">Težina
+                    </label>
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <input th:value="${book.shippingWeight}" type="number" step="0.01"
+                                   name="shippingWeight" class="form-control" id="shippingWeight"
+                                   placeholder="Težina"/> <span
+                                class="input-group-addon">grama</span>
+                        </div>
+                        <span class="help-block">Težina knjige</span>
+                    </div>
+                </div>
 
-					<!-- list price -->
-					<div class="form-group">
-						<label class="col-md-2 control-label" for="listPrice">Cena
-							</label>
-						<div class="col-md-8">
-							<div class="input-group">
-								<span class="input-group-addon">$</span> <input
-									th:value="${book.listPrice}" type="number" name="listPrice" step="0.01"
-									class="form-control" id="listPrice" placeholder="Cena" />
-							</div>
-							<span class="help-block">Cena knjige</span>
-						</div>
-					</div>
+                <!-- list price -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="listPrice">Cena
+                    </label>
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span> <input
+                                th:value="${book.listPrice}" type="number" name="listPrice" step="0.01"
+                                class="form-control" id="listPrice" placeholder="Cena"/>
+                        </div>
+                        <span class="help-block">Cena knjige</span>
+                    </div>
+                </div>
 
-					<!-- our price -->
-					<div class="form-group">
-						<label class="col-md-2 control-label" for="ourPrice">Cena sa
-							popustom</label>
-						<div class="col-md-8">
-							<div class="input-group">
-								<span class="input-group-addon">$</span> <input
-									th:value="${book.ourPrice}" type="number" name="ourPrice" step="0.01"
-									class="form-control" id="ourPrice" placeholder="Cena sa popustom" />
-							</div>
-							<span class="help-block">Cena knjige sa popustom</span>
-						</div>
-					</div>
+                <!-- our price -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="ourPrice">Cena sa
+                        popustom</label>
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span> <input
+                                th:value="${book.ourPrice}" type="number" name="ourPrice" step="0.01"
+                                class="form-control" id="ourPrice" placeholder="Cena sa popustom"/>
+                        </div>
+                        <span class="help-block">Cena knjige sa popustom</span>
+                    </div>
+                </div>
 
-					<!-- in stock number -->
-					<div class="form-group">
-						<label class="col-md-2 control-label" for="inStockNumber">Broj kopija
-							na lageru</label>
-						<div class="col-md-8">
-							<input th:value="${book.inStockNumber}" type="number"
-								name="inStockNumber" class="form-control" id="inStockNumber"
-								placeholder=">Broj kopija na lageru" /> <span
-								class="help-block">Broj kopija na lageru</span>
-						</div>
-					</div>
+                <!-- in stock number -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="inStockNumber">Broj kopija
+                        na lageru</label>
+                    <div class="col-md-8">
+                        <input th:value="${book.inStockNumber}" type="number"
+                               name="inStockNumber" class="form-control" id="inStockNumber"
+                               placeholder=">Broj kopija na lageru"/> <span
+                            class="help-block">Broj kopija na lageru</span>
+                    </div>
+                </div>
 
-					<!-- status of book -->
-					<div class="form-group">
-						<label class="col-md-2 control-label" for="status">Status</label>
-						<div class="col-md-8">
-							<label><input value="true" type="radio" name="active"
-								th:checked="${book.active}" /> Aktivna </label> <label><input
-								value="false" type="radio" name="active" th:checked="${!book.active}" />
-								Neaktivna </label> <span class="help-block">U zavisnosti
+                <!-- status of book -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="status">Status</label>
+                    <div class="col-md-8">
+                        <label><input value="true" type="radio" name="active" id="status"
+                                      th:checked="${book.active}"/> Aktivna </label> <label><input
+                            value="false" type="radio" name="active" th:checked="${!book.active}"/>
+                        Neaktivna </label> <span class="help-block">U zavisnosti
 						da li je knjiga aktivna ili ne</span>
-						</div>
-					</div>
+                    </div>
+                </div>
 
-					<!-- description -->
-					<div class="form-group">
-						<label class="col-md-2 control-label" for="description">Opis</label>
-						<div class="col-md-8">
+                <!-- description -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="description">Opis</label>
+                    <div class="col-md-8">
 							<textarea name="description" rows="5" class="form-control"
-								id="description" th:value="${book.description}" th:text="${book.description}"
-									  placeholder="Opis" ></textarea>
-							<span class="help-block">Opis knjige</span>
-						</div>
-					</div>
+                                      id="description" th:value="${book.description}" th:text="${book.description}"
+                                      placeholder="Opis"></textarea>
+                        <span class="help-block">Opis knjige</span>
+                    </div>
+                </div>
 
-					<!-- upload image -->
-					<div class="form-group">
-						<div class="col-md-2">
-							<label for="bookImage">Otpremi sliku korice</label>
-						</div>
-						<div class="col-md-8">
-							<input id="bookImage" type="file" name="bookImage"
-								th:value="${book.bookImage}" />
-						</div>
-					</div>
+                <!-- upload image -->
+                <div class="form-group">
+                    <div class="col-md-2">
+                        <label for="bookImage">Otpremi sliku korice</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input id="bookImage" type="file" name="bookImage"
+                               th:value="${book.bookImage}"/>
+                    </div>
+                </div>
 
-					<div class="form-group">
-						<div class="col-md-2"></div>
-						<div class="col-md-8">
-							<button type="submit" class="btn btn-success">Ažuriraj knjigu</button>
-							<a class="btn btn-danger" th:href="@{/book/bookInfo(id=${book.id})}">Otkaži</a>
-						</div>
-					</div>
-				</fieldset>
-			</form>
-		</div>
-	</div>
+                <div class="form-group">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <button type="submit" class="btn btn-success">Ažuriraj knjigu</button>
+                        <a class="btn btn-danger" th:href="@{/book/bookInfo(id=${book.id})}">Otkaži</a>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
 
 
-	<div th:replace="common/header :: body-bottom-scripts" />
+<div th:replace="common/header :: body-bottom-scripts"/>
 </body>
 </html>
