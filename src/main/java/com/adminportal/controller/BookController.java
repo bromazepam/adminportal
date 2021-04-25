@@ -69,18 +69,18 @@ public class BookController {
         return "updateBook";
     }
 
-    @RequestMapping(value="/updateBook", method=RequestMethod.POST)
+    @RequestMapping(value = "/updateBook", method = RequestMethod.POST)
     public String updateBookPost(@ModelAttribute("book") Book book, HttpServletRequest request) {
         bookService.save(book);
 
         MultipartFile bookImage = book.getBookImage();
 
-        if(!bookImage.isEmpty()) {
+        if (!bookImage.isEmpty()) {
             try {
                 byte[] bytes = bookImage.getBytes();
                 String name = book.getId() + ".png";
 
-                Files.delete(Paths.get("src/main/resources/static/image/book/"+name));
+                Files.delete(Paths.get("src/main/resources/static/image/book/" + name));
 
                 BufferedOutputStream stream = new BufferedOutputStream(
                         new FileOutputStream(new File("src/main/resources/static/image/book/" + name)));
@@ -91,7 +91,7 @@ public class BookController {
             }
         }
 
-        return "redirect:/book/bookInfo?id="+book.getId();
+        return "redirect:/book/bookInfo?id=" + book.getId();
     }
 
     @RequestMapping("/bookList")
@@ -105,7 +105,7 @@ public class BookController {
     @RequestMapping(value = "/remove", method = RequestMethod.POST)
     public String remove(
             @ModelAttribute("id") String id, Model model
-            ){
+    ) {
         bookService.removeOne(Long.parseLong(id.substring(8)));
         List<Book> bookList = bookService.findAll();
         model.addAttribute("bookList", bookList);

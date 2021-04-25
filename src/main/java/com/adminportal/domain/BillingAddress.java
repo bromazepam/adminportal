@@ -19,7 +19,6 @@ public class BillingAddress {
     @OneToOne
     private Order order;
 
-
     public Long getId() {
         return id;
     }

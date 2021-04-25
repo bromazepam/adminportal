@@ -17,10 +17,8 @@ public class ResourceController {
     private BookService bookService;
 
     @RequestMapping(value = "/book/removeList", method = RequestMethod.POST)
-    public String removeList(
-            @RequestBody ArrayList<String> bookIdList, Model model
-            ){
-        for(String id: bookIdList){
+    public String removeList(@RequestBody ArrayList<String> bookIdList, Model model) {
+        for (String id : bookIdList) {
             String bookId = id.substring(8);
             bookService.removeOne(Long.parseLong(bookId));
         }

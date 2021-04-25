@@ -10,16 +10,17 @@ import java.util.List;
 
 @Service
 public class BookServiceImpl implements BookService {
+
     @Autowired
     private BookRepository bookRepository;
 
-    public Book save(Book book){
+    public Book save(Book book) {
         return bookRepository.save(book);
     }
 
     @Override
     public List<Book> findAll() {
-        return (List<Book>)bookRepository.findAll();
+        return (List<Book>) bookRepository.findAll();
     }
 
     @Override
