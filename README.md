@@ -1,11 +1,11 @@
 # Bookstore - Admin portal
 
 This is an e-commerce web application built by me while covering the 
-[udemy]([https://www.udemy.com/complete-e-commerce-course-javaspringhibernate-and-mysql/](https://www.udemy.com/complete-e-commerce-course-javaspringhibernate-and-mysql/))
+[udemy](https://www.udemy.com/complete-e-commerce-course-javaspringhibernate-and-mysql/)
 course using Java,Spring,Hibernate and MySQL. Bookstore is a simple Java Spring Boot application to store and sell books.
  The project was built focusing the MVC pattern. It is divided into two
  individual modules, admin and
-[user]([https://github.com/bromazepam/bookstoreMaster](https://github.com/bromazepam/bookstoreMaster))
+[user](https://github.com/bromazepam/bookstoreMaster)
  part. Both running independently and using the same database. 
  
  ## Built With
