@@ -38,7 +38,7 @@ course using Java, Spring, Hibernate and MySQL. Bookstore is a simple Java Sprin
  ```
 
 By default, the app runs on port: `8081`. You can open up the admin ui from following url: `http://localhost:8081`.
-Login credentials are user: `admin`, password: `admin`
+Login credentials are username: `admin`, password: `admin`
 ## Application screenshots
 
 ![Login page](./src/main/resources/static/image/screenshots/login.png)
