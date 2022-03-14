@@ -4,7 +4,6 @@ import com.adminportal.service.impl.UserSecurityService;
 import com.adminportal.utility.SecurityUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -17,11 +16,12 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
-    private Environment env;
 
-    @Autowired
-    private UserSecurityService userSecurityService;
+    private final UserSecurityService userSecurityService;
+
+    public SecurityConfig(UserSecurityService userSecurityService) {
+        this.userSecurityService = userSecurityService;
+    }
 
     private BCryptPasswordEncoder passwordEncoder() {
         return SecurityUtility.passwordEncoder();

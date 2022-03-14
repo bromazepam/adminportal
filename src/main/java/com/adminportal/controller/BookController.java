@@ -2,7 +2,6 @@ package com.adminportal.controller;
 
 import com.adminportal.domain.Book;
 import com.adminportal.service.BookService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,13 +17,17 @@ import java.io.FileOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
-@RequestMapping("/book")
+@RequestMapping("/api/v1/book")
 public class BookController {
 
-    @Autowired
-    private BookService bookService;
+    private final BookService bookService;
+
+    public BookController(BookService bookService) {
+        this.bookService = bookService;
+    }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addBook(Model model) {
@@ -55,7 +58,7 @@ public class BookController {
 
     @RequestMapping("/bookInfo")
     public String bookInfo(@RequestParam("id") Long id, Model model) {
-        Book book = bookService.findOne(id);
+        Optional<Book> book = bookService.findById(id);
         model.addAttribute("book", book);
 
         return "bookInfo";
@@ -63,7 +66,7 @@ public class BookController {
 
     @RequestMapping("/updateBook")
     public String updateBook(@RequestParam("id") Long id, Model model) {
-        Book book = bookService.findOne(id);
+        Optional<Book> book = bookService.findById(id);
         model.addAttribute("book", book);
 
         return "updateBook";
@@ -91,7 +94,7 @@ public class BookController {
             }
         }
 
-        return "redirect:/book/bookInfo?id=" + book.getId();
+        return "redirect:/api/v1/book/bookInfo?id=" + book.getId();
     }
 
     @RequestMapping("/bookList")
@@ -110,6 +113,6 @@ public class BookController {
         List<Book> bookList = bookService.findAll();
         model.addAttribute("bookList", bookList);
 
-        return "redirect:/book/bookList";
+        return "redirect:/api/v1/book/bookList";
     }
 }

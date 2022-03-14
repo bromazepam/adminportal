@@ -3,13 +3,14 @@ package com.adminportal.service;
 import com.adminportal.domain.Book;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface BookService {
     Book save(Book book);
 
     List<Book> findAll();
 
-    Book findOne(Long id);
+    Optional<Book> findById(Long id);
 
     void removeOne(Long id);
 }

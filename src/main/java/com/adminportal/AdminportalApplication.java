@@ -5,7 +5,6 @@ import com.adminportal.domain.security.Role;
 import com.adminportal.domain.security.UserRole;
 import com.adminportal.service.UserService;
 import com.adminportal.utility.SecurityUtility;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,8 +14,12 @@ import java.util.Set;
 
 @SpringBootApplication
 public class AdminportalApplication implements CommandLineRunner {
-    @Autowired
-    private UserService userService;
+
+    private final UserService userService;
+
+    public AdminportalApplication(UserService userService) {
+        this.userService = userService;
+    }
 
 
     public static void main(String[] args) {
@@ -25,7 +28,6 @@ public class AdminportalApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
 
         User user1 = new User();
         user1.setUsername("admin");
