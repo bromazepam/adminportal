@@ -20,7 +20,7 @@ class CartItemTest {
         CartItem cartItem = new CartItem(1L, 10, new BigDecimal("152207"),
                 book, arrayList, shoppingCart, order);
 
-        assertAll("payment test",
+        assertAll("CartITem test",
                 () -> assertEquals(cartItem.getId(), 1L, "CartItem id failed"),
                 () -> assertEquals(cartItem.getQty(), 10, "CartItem quantity failed"),
                 () -> assertEquals(cartItem.getSubtotal(), new BigDecimal("152207"), "CartItem subtotal failed"),

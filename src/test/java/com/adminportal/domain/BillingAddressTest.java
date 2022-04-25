@@ -15,7 +15,7 @@ class BillingAddressTest {
                 "street2", "city", "state", "country",
                 "zip", order);
 
-        assertAll("payment test",
+        assertAll("BillingAddress test",
                 () -> assertEquals(address.getId(), 1L, "address id failed"),
                 () -> assertEquals(address.getBillingAddressName(), "addressName", "BillingAddress addressName failed"),
                 () -> assertEquals(address.getBillingAddressStreet1(), "street1", "BillingAddress street1 failed"),

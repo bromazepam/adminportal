@@ -42,6 +42,26 @@ public class User implements UserDetails {
     @JsonIgnore
     private Set<UserRole> userRoles = new HashSet<>();
 
+    public User(Long id, String username, String password, String firstName, String lastName, String email,
+                String phone, boolean enabled, ShoppingCart shoppingCart, List<UserShipping> userShippingList,
+                List<UserPayment> userPaymentList, Set<UserRole> userRoles) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.enabled = enabled;
+        this.shoppingCart = shoppingCart;
+        this.userShippingList = userShippingList;
+        this.userPaymentList = userPaymentList;
+        this.userRoles = userRoles;
+    }
+
+    public User() {
+    }
+
     public ShoppingCart getShoppingCart() {
         return shoppingCart;
     }

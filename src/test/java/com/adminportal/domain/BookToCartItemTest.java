@@ -13,7 +13,7 @@ class BookToCartItemTest {
         CartItem cartItem = mock(CartItem.class);
         BookToCartItem item = new BookToCartItem(1L, book, cartItem);
 
-        assertAll("payment test",
+        assertAll("BookToCartItem test",
                 () -> assertEquals(item.getId(), 1L, "BookToCartItem id failed"),
                 () -> assertEquals(item.getBook(), book, "BookToCartItem book failed"),
                 () -> assertEquals(item.getCartItem(), cartItem, "BookToCartItem cartItem failed"));

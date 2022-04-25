@@ -15,7 +15,7 @@ class PaymentTest {
         Payment payment = new Payment(1L, "type", "cardName", "cardNumber", 11,
                 22, 123, "testName", order, userBilling);
 
-        assertAll("user test",
+        assertAll("payment test",
                 () -> assertEquals(payment.getId(), 1L),
                 () -> assertEquals(payment.getType(), "type"),
                 () -> assertEquals(payment.getCardName(), "cardName"),

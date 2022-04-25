@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 
 class ResourceControllerTest {
-    
+
     @Test
     void testRemoveList() {
         ResourceController resourceController = new ResourceController(new BookServiceImpl(mock(BookRepository.class)));
