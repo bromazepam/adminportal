@@ -55,7 +55,7 @@ class BookServiceImplTest {
         Book book = new Book();
         given(bookRepository.findById(any())).willReturn(Optional.of(book));
         //when
-        Optional<Book> expected = bookService.findById(any());
+        Book expected = bookService.findById(any());
         //then
         then(bookRepository).should().findById(any());
         assertThat(expected).isNotNull();
