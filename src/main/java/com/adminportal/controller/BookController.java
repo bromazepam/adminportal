@@ -52,7 +52,7 @@ public class BookController {
             e.printStackTrace();
         }
 
-        return "redirect:bookList";
+        return "redirect:books";
     }
 
     @RequestMapping("/bookInfo")
@@ -96,7 +96,7 @@ public class BookController {
         return "redirect:/api/v1/book/bookInfo?id=" + book.getId();
     }
 
-    @RequestMapping("/bookList")
+    @RequestMapping("/books")
     public String bookList(Model model) {
         List<Book> bookList = bookService.findAll();
         model.addAttribute("bookList", bookList);
@@ -112,6 +112,6 @@ public class BookController {
         List<Book> bookList = bookService.findAll();
         model.addAttribute("bookList", bookList);
 
-        return "redirect:/api/v1/book/bookList";
+        return "redirect:/api/v1/book/books";
     }
 }
