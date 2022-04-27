@@ -60,7 +60,7 @@ public class BookController {
         Book book = bookService.findById(id);
         model.addAttribute("book", book);
 
-        return "bookInfo";
+        return "bookDetails";
     }
 
     @RequestMapping("/updateBook")
