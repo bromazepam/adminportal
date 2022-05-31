@@ -5,10 +5,9 @@ import com.adminportal.domain.User;
 import com.adminportal.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -16,16 +15,16 @@ import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.*;
 
-@ContextConfiguration(classes = {UserServiceImpl.class})
-@ExtendWith(SpringExtension.class)
+@ExtendWith(MockitoExtension.class)
 class UserServiceImplTest {
 
-    @MockBean
+    @Mock
     private UserRepository userRepository;
 
-    @Autowired
+    @InjectMocks
     private UserServiceImpl userServiceImpl;
 
     @Test
@@ -64,12 +63,12 @@ class UserServiceImplTest {
         user2.setUserShippingList(new ArrayList<>());
         user2.setUsername("janedoe");
 
-        when(this.userRepository.findByUsername((String) any())).thenReturn(user2);
+        when(this.userRepository.findByUsername(any())).thenReturn(user2);
         User actualCreateUserResult = this.userServiceImpl.createUser(user, new HashSet<>());
 
         assertSame(user2, actualCreateUserResult);
         assertEquals("1", actualCreateUserResult.getShoppingCart().getGrandTotal().toString());
-        verify(this.userRepository).findByUsername((String) any());
+        then(this.userRepository).should().findByUsername(any());
     }
 
     @Test
@@ -108,12 +107,12 @@ class UserServiceImplTest {
         user2.setUserShippingList(new ArrayList<>());
         user2.setUsername("janedoe");
 
-        when(this.userRepository.save((User) any())).thenReturn(user2);
+        when(this.userRepository.save(any())).thenReturn(user2);
         User actualSaveResult = this.userServiceImpl.save(user);
 
         assertSame(user2, actualSaveResult);
         assertEquals("1", actualSaveResult.getShoppingCart().getGrandTotal().toString());
-        verify(this.userRepository).save((User) any());
+        then(this.userRepository).should().save(any());
     }
 }
 

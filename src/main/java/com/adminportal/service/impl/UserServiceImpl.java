@@ -17,7 +17,6 @@ public class UserServiceImpl implements UserService {
     private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
 
     private final UserRepository userRepository;
-
     private final RoleRepository roleRepository;
 
     public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository) {
@@ -35,12 +34,9 @@ public class UserServiceImpl implements UserService {
             for (UserRole ur : userRoles) {
                 roleRepository.save(ur.getRole());
             }
-
             user.getUserRoles().addAll(userRoles);
-
             localUser = userRepository.save(user);
         }
-
         return localUser;
     }
 
@@ -48,5 +44,4 @@ public class UserServiceImpl implements UserService {
     public User save(User user) {
         return userRepository.save(user);
     }
-
 }

@@ -34,6 +34,5 @@ class UserSecurityServiceTest {
         User user = userRepository.findByUsername("2");
 
         AssertionsForClassTypes.assertThat(user).isNull();
-
     }
 }

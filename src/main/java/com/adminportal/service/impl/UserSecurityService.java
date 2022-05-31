@@ -23,8 +23,6 @@ public class UserSecurityService implements UserDetailsService {
         if (null == user) {
             throw new UsernameNotFoundException("Username not found");
         }
-
         return user;
     }
-
 }
